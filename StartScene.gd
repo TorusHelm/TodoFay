@@ -15,7 +15,8 @@ func load_data():
 
 func _ready():
 	var count: int = 0
+	var todo_container = $MarginContainer/ScrollContainer/TodoList
 	while count < 3:
-		#Global.TODO_LIST.create_todo("Помыть жопу батону\nПомыть жопу батону\nПомыть жопу батону " + str(count + 1) + " раз", "2" + str(count) + ".10.2024", true)
+		todo_container.create_todo("Помыть жопу батону\nПомыть жопу батону\nПомыть жопу батону " + str(count + 1) + " раз", "2" + str(count) + ".10.2024", true)
 		count = count + 1
 	load_data()
