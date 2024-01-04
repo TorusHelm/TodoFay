@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckpm8u8dr2a4h"]
+[gd_scene load_steps=4 format=3 uid="uid://ckpm8u8dr2a4h"]
 
-[ext_resource type="Texture2D" uid="uid://brwqkp0sxip00" path="res://assets/images/back.svg" id="1"]
+[ext_resource type="Theme" uid="uid://dcwiy24heb5u3" path="res://default_theme.tres" id="1_7i5ng"]
 [ext_resource type="Script" path="res://CreateScene.gd" id="1_pomee"]
+[ext_resource type="Texture2D" uid="uid://cl6g5b4ig73uw" path="res://assets/icons/arrow-left.svg" id="3_idd7v"]
 
 [node name="CreateScene" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_7i5ng")
 script = ExtResource("1_pomee")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -19,10 +21,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -42,14 +40,14 @@ layout_mode = 2
 [node name="Back" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-icon = ExtResource("1")
+icon = ExtResource("3_idd7v")
 expand_icon = true
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Create you'r TODO"
 
-[node name="TodoDate" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="TodoDate" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 placeholder_text = "01.01.1970"
@@ -59,6 +57,7 @@ custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Помыть жопу батону"
+wrap_mode = 1
 
 [node name="Save" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxkliwxmivoyp"]
+[gd_scene load_steps=4 format=3 uid="uid://cxkliwxmivoyp"]
 
 [ext_resource type="Script" path="res://StartScene.gd" id="1_37f5x"]
-[ext_resource type="Texture2D" uid="uid://dxp3sw3gvago" path="res://assets/images/add.svg" id="2_bbd7o"]
+[ext_resource type="Theme" uid="uid://dcwiy24heb5u3" path="res://default_theme.tres" id="1_nx0mg"]
+[ext_resource type="Texture2D" uid="uid://isp04awxlqij" path="res://assets/icons/plus.svg" id="3_cdamu"]
 
 [node name="StartScene" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_nx0mg")
 script = ExtResource("1_37f5x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -17,38 +19,46 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -40.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+scroll_deadzone = 20
 
 [node name="TodoList" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 
-[node name="add" type="Button" parent="."]
-custom_minimum_size = Vector2(0, 40)
+[node name="BottomButton" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -8.0
+offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
-icon = ExtResource("2_bbd7o")
+
+[node name="add" type="Button" parent="BottomButton"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon = ExtResource("3_cdamu")
 icon_alignment = 1
 expand_icon = true
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 unique_name_in_owner = true
+title = ""
+initial_position = 1
+size = Vector2i(280, 124)
+unresizable = true
+borderless = true
 ok_button_text = "Удалить"
-dialog_text = "Удалить?"
+dialog_text = "Удалить запись?"
 cancel_button_text = "Отмена"
 
-[connection signal="gui_input" from="MarginContainer/ScrollContainer/TodoList" to="." method="_on_todo_list_gui_input"]
-[connection signal="pressed" from="add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="BottomButton/add" to="." method="_on_add_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

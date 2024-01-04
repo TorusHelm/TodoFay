@@ -55,16 +55,26 @@ func create_todo(text, date, done, file_name):
 		"done": done,
 		"file_name": file_name
 	}
+
+	if todo_list.get_child_count() > 0:
+		var divider = HSeparator.new()
+		todo_list.add_child(divider)
+
 	var todo = VBoxContainer.new()
+	todo.add_theme_constant_override("separation", 4)
 	var todo_body = HBoxContainer.new()
 
 	var todo_date = Label.new()
 	todo_date.text = date
 	todo.add_child(todo_date)
 
-	var label = Label.new()
-	label.text = text
-	todo_body.add_child(label)
+	var todo_text = Label.new()
+	todo_text.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	todo_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	todo_text.clip_text = true
+	todo_text.max_lines_visible = 1
+	todo_text.text = text
+	todo_body.add_child(todo_text)
 
 	var checkbox = CheckBox.new()
 	checkbox.button_pressed = done
