@@ -7,7 +7,7 @@ func _ready():
 
 func load_data():
 	var dir = DirAccess.open(Global.SAVE_DIR)
-	
+
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -45,7 +45,7 @@ func load_file(file_name):
 
 func create_todo(text, date, done, file_name):
 	var todo_list = %TodoList
-	
+
 	if todo_list == null:
 		return
 
@@ -57,7 +57,7 @@ func create_todo(text, date, done, file_name):
 	}
 	var todo = VBoxContainer.new()
 	var todo_body = HBoxContainer.new()
-	
+
 	var todo_date = Label.new()
 	todo_date.text = date
 	todo.add_child(todo_date)
@@ -65,12 +65,12 @@ func create_todo(text, date, done, file_name):
 	var label = Label.new()
 	label.text = text
 	todo_body.add_child(label)
-	
+
 	var checkbox = CheckBox.new()
 	checkbox.button_pressed = done
 	checkbox.connect("toggled", func(event): update_done(event, current_todo))
 	todo_body.add_child(checkbox)
-	
+
 	var edit = Button.new()
 	edit.custom_minimum_size.x = 40
 	edit.custom_minimum_size.y = 40
@@ -122,9 +122,7 @@ func remove_todo():
 
 
 func to_create_scene(current_todo):
-	print("to_create_scene pressed")
 	Global.current_todo = current_todo
-	print(current_todo)
 	get_tree().change_scene_to_file("res://CreateScene.tscn")
 
 

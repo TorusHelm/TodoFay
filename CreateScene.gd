@@ -11,9 +11,6 @@ func _ready():
 
 
 func set_current_todo():
-	print("Global.current_todo: ")
-	print(Global.current_todo)
-
 	if Global.current_todo == null:
 		return
 
