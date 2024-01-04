@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxkliwxmivoyp"]
+[gd_scene load_steps=5 format=3 uid="uid://cxkliwxmivoyp"]
 
 [ext_resource type="Script" path="res://StartScene.gd" id="1_37f5x"]
 [ext_resource type="Texture2D" uid="uid://dxp3sw3gvago" path="res://assets/images/add.svg" id="2_bbd7o"]
+[ext_resource type="Script" path="res://TODOList.gd" id="2_kaeo5"]
+[ext_resource type="Script" path="res://Add.gd" id="4_irmpf"]
 
 [node name="StartScene" type="Control"]
 layout_mode = 3
@@ -25,9 +27,9 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TodoList" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
+script = ExtResource("2_kaeo5")
 
 [node name="add" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 40)
@@ -42,13 +44,4 @@ grow_vertical = 0
 icon = ExtResource("2_bbd7o")
 icon_alignment = 1
 expand_icon = true
-
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-unique_name_in_owner = true
-ok_button_text = "Удалить"
-dialog_text = "Удалить?"
-cancel_button_text = "Отмена"
-
-[connection signal="gui_input" from="MarginContainer/ScrollContainer/TodoList" to="." method="_on_todo_list_gui_input"]
-[connection signal="pressed" from="add" to="." method="_on_add_pressed"]
-[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+script = ExtResource("4_irmpf")
